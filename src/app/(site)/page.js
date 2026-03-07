@@ -189,9 +189,8 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="px-10 py-20">
+      <section className="py-20">
         <div className="reading-container">
-          {/* Side label */}
           <h2>
             La mayoría de los inversionistas toman decisiones con la mitad de la información
           </h2>
@@ -212,7 +211,7 @@ export default function Home() {
       <section className="w-full py-20 border-t border-neutral-300">
         <div className="container">
           <div className="reading-container">
-            <h2 className="font-bold mb-20">Porque lo que determina si tu dinero está seguro no es el render, es la
+            <h2>Porque lo que determina si tu dinero está seguro no es el render, es la
               estructura real detrás del proyecto.</h2>
           </div>
           {problemQuestions.map((row) => (
@@ -286,7 +285,7 @@ export default function Home() {
       </section>
 
       {/* ── PROCESO ── */}
-      <section id="proceso" className="w-full pt-20 !px-0 border-t border-neutral-300">
+      <section id="proceso" className="w-full pt-20 px-8 border-t border-neutral-300">
         <div className="reading-container mb-12">
           <h2 className="font-bold">Un proceso simple<br/>para inversionistas serios</h2>
           <p>Sin presentaciones genéricas.<br/>Sin urgencia artificial.<br/>Sin rollo.</p>
@@ -300,7 +299,7 @@ export default function Home() {
             >
               <div className="text-[11px] font-normal text-[#8a8680] tracking-[0.1em] pt-0.5">{p.n}</div>
               <h3
-                className="text-paso font-medium tracking-[-0.01em] leading-none text-[#1a1814] transition-opacity duration-300 group-hover:opacity-50">
+                className="text-paso font-medium tracking-[-0.01em] leading-none text-[#1a1814] group-hover:opacity-50">
                 {p.title}
               </h3>
               <p
@@ -310,29 +309,27 @@ export default function Home() {
             </div>
           ))}
         </div>
+      </section>
 
-        {/* $0 nota */}
-        <div className="w-full bg-neutral-900 flex items-center mt-20 py-40">
-          <div className="reading-container">
-            <h3
-              className="ft-8 font-semibold text-neutral-300">
-              Nuestro incentivo está alineado con el tuyo, no con el del desarrollador
-            </h3>
-            <p className="text-neutral-100 leading-[1.8]">
-              Nuestro servicio no tiene costo para el inversionista.<br/>
-              La comisión proviene directamente de los desarrolladores cuando se concreta la operación.<br/>
-            </p>
-          </div>
+      <section className="w-full bg-neutral-900 flex items-center mt-20 py-40 px-8">
+        <div className="reading-container">
+          <h3
+            className="ft-8 font-semibold text-neutral-300">
+            Nuestro incentivo está alineado con el tuyo, no con el del desarrollador
+          </h3>
+          <p className="text-neutral-100 leading-[1.8]">
+            Nuestro servicio no tiene costo para el inversionista.<br/>
+            La comisión proviene directamente de los desarrolladores cuando se concreta la operación.<br/>
+          </p>
         </div>
       </section>
 
       {/* ── PROYECTOS ── */}
-      <section id="proyectos" className="w-full py-20 border-t border-neutral-300">
-        <div className="container">
-          <div className="reading-container mb-12">
-            <h2 className="font-bold">Estas son algunos de los proyectos que hoy cumplen nuestros criterios</h2>
-            <p>Desarrollos en la Zona Metropolitana de Guadalajara y otros mercados estratégicos.</p>
-          </div>
+      <section id="proyectos" className="w-full py-20 px-8 border-t border-neutral-300">
+
+        <div className="reading-container mb-12">
+          <h2 className="font-bold">Estas son algunos de los proyectos que hoy cumplen nuestros criterios</h2>
+          <p>Desarrollos en la Zona Metropolitana de Guadalajara y otros mercados estratégicos.</p>
         </div>
 
         <div className="w-full">
@@ -347,7 +344,7 @@ export default function Home() {
                   {p.zona}
                 </div>
                 <h3
-                  className="ft-6 font-semibold transition-opacity duration-300 group-hover:opacity-50">
+                  className="ft-6 font-semibold group-hover:opacity-50">
                   {p.name}
                 </h3>
                 <p

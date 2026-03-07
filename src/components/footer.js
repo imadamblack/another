@@ -11,7 +11,7 @@ export default function Footer() {
             <p className="text-neutral-50">Todos los derechos reservados.</p>
             <div className="flex gap-2 mr-3">
               <p className="text-neutral-50">{info.companyName}</p>
-              <p className="relative material-icons text-neutral-50 top-2">close</p>
+              <p className="relative material-icons text-neutral-50 top-2 !my-0">close</p>
               <a href="https://marketing.notoriovs.com"
                  target="_blank"
                  className="relative w-[13rem] top-0.5">

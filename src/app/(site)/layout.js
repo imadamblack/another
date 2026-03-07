@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="es" className="scroll-pt-[6rem]">
-      <body className="bg-[#edeae3] text-[#1a1814] font-sans font-light leading-relaxed overflow-x-hidden">
+      <body className="bg-neutral-100 text-[#1a1814] font-sans font-light leading-relaxed overflow-x-hidden">
       <Header/>
       <main>{children}</main>
       <Footer/>
