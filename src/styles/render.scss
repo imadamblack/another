@@ -1,0 +1,14 @@
+.slide {
+  @apply w-full flex flex-col xl:aspect-video 2xl:aspect-[2/1.05] rounded-2xl shadow-2xl shadow-black/60 bg-black p-8 md:px-20 md:py-14;
+}
+
+@media print {
+  @page {
+    size: Legal landscape;
+    margin: 0;
+  }
+
+  .slide {
+    @apply aspect-[14/8.5] rounded-none;
+  }
+}
