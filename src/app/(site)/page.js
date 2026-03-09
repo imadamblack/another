@@ -21,7 +21,7 @@ function FaqItem({question, answer}) {
           {question}
         </span>
         <span
-          className={`w-7 h-7 rounded-full border border-[#1a1814]/10 flex items-center justify-center text-base font-light text-[#8a8680] flex-shrink-0 transition-all duration-300 select-none ${
+          className={`ft-2 w-8 h-8 rounded-full border border-[#1a1814]/10 flex items-center justify-center text-base font-light text-[#8a8680] flex-shrink-0 transition-all duration-300 select-none ${
             open ? 'rotate-45 bg-[#1a1814] text-[#edeae3] border-[#1a1814]' : ''
           }`}
         >
@@ -33,6 +33,15 @@ function FaqItem({question, answer}) {
           {answer}
         </p>
       </div>
+    </div>
+  );
+}
+
+function CTA({button = 'Contáctanos', cta = 'Programa una cita para conocer las mejores oportunidades de inversión'}) {
+  return (
+    <div className="w-full">
+      <Link href="#contact" className="button !w-full mb-4">{button} (→)</Link>
+      <div className="text-center -ft-2">{cta}</div>
     </div>
   );
 }
@@ -104,31 +113,41 @@ const pasos = [
 
 const proyectos = [
   {
-    zona: 'Zapopan · ZMG',
-    name: 'Sao Paulo Vertical',
+    zona: 'Americana · GDL',
+    name: 'Scala Towers',
+    price: '$2.9 mdp',
+    timeframe: '24 meses',
+    validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
     desc: 'Estructura legal y financiera verificada. Solicita los detalles y nuestra evaluación completa.',
     badge: 'Disponible',
     badgeClass: 'bg-[#1a1814] text-[#edeae3]',
     dim: false,
-    img: '',
+    img: 'scala',
   },
   {
-    zona: 'Providencia · GDL',
-    name: 'Sao Paulo Urbano',
+    zona: 'Americana · GDL',
+    name: 'Torre XII',
+    price: '$3.2 mdp',
+    timeframe: '30 meses',
+    validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
     desc: 'Estructura legal y financiera verificada. Solicita los detalles y nuestra evaluación completa.',
     badge: 'Disponible',
     badgeClass: 'bg-[#1a1814] text-[#edeae3]',
     dim: false,
-    img: '',
+    img: 'torrexii',
   },
   {
     zona: 'The Woodlands · TX',
     name: 'The Meadows',
+    price: '$300,000 usd',
+    timeframe: '6 meses',
+    validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
+    stage: 'En construcción',
     desc: 'Constantemente revisamos nuevos desarrollos. Si no hay algo para tu perfil hoy, te lo decimos.',
     badge: 'Próximamente',
     badgeClass: 'border border-[#1a1814]/10 text-[#8a8680]',
     dim: false,
-    img: '',
+    img: 'meadows',
   },
 ];
 
@@ -159,7 +178,6 @@ const faqs = [
    Page
 ───────────────────────────────────────── */
 export default function Home() {
-  // useReveal()
 
   return (
     <>
@@ -205,6 +223,7 @@ export default function Home() {
             Lo que nadie te está contando es esto:<br/>
             <span className="ft-2 font-bold">Un proyecto puede tener amenidades de lujo y una ubicación privilegiada… y aun así ser una mala inversión.</span><br/>
           </p>
+          <CTA button="Da clic aquí"/>
         </div>
       </section>
 
@@ -233,6 +252,9 @@ export default function Home() {
           <p>El trabajo es vender unidades, no analizar inversiones.</p>
           <p>El incentivo es cerrar la operación, no proteger tu capital.</p>
           <p>Eso es exactamente lo que nosotros hacemos diferente.</p>
+        </div>
+        <div className="reading-container">
+          <CTA button="Da clic aquí"/>
         </div>
       </section>
 
@@ -281,6 +303,9 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <div className="reading-container">
+            <CTA button="Da clic aquí"/>
+          </div>
         </div>
       </section>
 
@@ -309,6 +334,9 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <div className="reading-container">
+          <CTA button="Da clic aquí"/>
+        </div>
       </section>
 
       <section className="w-full bg-neutral-900 flex items-center mt-20 py-40 px-8">
@@ -332,30 +360,38 @@ export default function Home() {
           <p>Desarrollos en la Zona Metropolitana de Guadalajara y otros mercados estratégicos.</p>
         </div>
 
-        <div className="w-full">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {proyectos.map((p) => (
             <div
               key={p.zona}
-              className="group grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto] items-center gap-10 py-6 border-t border-neutral-300 last:border-b last:border-neutral-300 cursor-default"
+              className="group grid grid-cols-1 items-center border-y border-neutral-300 cursor-default"
               style={p.dim ? {opacity: 0.35, pointerEvents: 'none'} : {}}
             >
-              <div className="flex flex-col gap-1">
-                <div className="-ft-3 uppercase text-neutral-602">
+              <div className="relative w-full aspect-video">
+                <Image src={`/images/home/${p.img}.jpg`} fill alt={p.name} objectFit="cover"/>
+              </div>
+
+              <div className="flex flex-col pt-8 pb-16">
+                <div className="-ft-3 uppercase text-neutral-600">
                   {p.zona}
                 </div>
-                <h3
-                  className="ft-6 font-semibold group-hover:opacity-50">
+                <h3 className="ft-6 !my-0 font-semibold group-hover:opacity-50">
                   {p.name}
                 </h3>
-                <p
-                  className="hidden md:block font-light text-neutral-600 max-w-[260px]">
-                  {p.desc}
+                <p className="font-semibold group-hover:opacity-50">
+                  → Desde {p.price}
                 </p>
+                <p className="font-semibold group-hover:opacity-50">
+                  → Entrega en {p.timeframe}
+                </p>
+                <div className="flex gap-4 my-8">
+                  {p.validators.map(v => (
+                    // eslint-disable-next-line react/jsx-key
+                    <p className="py-1 px-2 border-2 -ft-3 font-medium tracking-wide">{v} (OK)</p>
+                  ))}
+                </div>
+                <CTA button={`Me interesa ${p.name}`} cta={`Programa una cita para conocer más sobre ${p.name}`}/>
               </div>
-              <span
-                className={`text-[10px] font-medium tracking-[0.12em] uppercase px-4 py-1.5 flex-shrink-0 ${p.badgeClass}`}>
-              {p.badge}
-            </span>
             </div>
           ))}
         </div>
@@ -392,13 +428,10 @@ export default function Home() {
             <FaqItem key={f.question} question={f.question} answer={f.answer}/>
           ))}
         </div>
-        <div className="reading-container">
-          <button className="">ASDASD</button>
-        </div>
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="w-full py-20">
+      <section id="contact" className="w-full py-20">
         <div className="reading-container">
           <h2 className="font-bold">
             Ya llegaste hasta acá, programa una cita para revisar opciones de inversión que sí valen la pena

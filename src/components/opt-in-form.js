@@ -41,7 +41,8 @@ export default function OptInForm() {
         {email: data.email, phone: data.phone, externalID: id},
       );
       setCookie('lead', {...data, id});
-      router.push(`/survey?id=${id}`);
+      // router.push(`/survey?id=${id}`);
+      router.push(`/thankyou`)
 
     } catch {
       fbEvent(
@@ -90,12 +91,6 @@ export default function OptInForm() {
         placeholder="teléfono de WhatsApp"
       />
       {errors.phone && <span className="-ft-3 text-brand-2">Solo 10 dígitos sin espacios</span>}
-      <input {...register(
-        'company',
-        {
-          required: true,
-        },
-      )} placeholder="nombre de tu empresa"/>
 
       <button disabled={sending} className="w-full">
         {sending && <span className="animate-spin mr-4">+</span>}
