@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { info } from '../../info';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { getCookie, setCookie } from 'cookies-next';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { restrictNumber, emailRegExp } from '@/utils/formValidators';
 import fbEvent from '@/services/fbEvents';
+import getTrackingData from '@/services/tracking-cookies';
 
 export default function OptInForm() {
   const [sending, setSending] = useState(false);
@@ -15,17 +16,18 @@ export default function OptInForm() {
     handleSubmit,
     formState: {errors},
   } = useForm();
+  const searchParams = useSearchParams();
+  const {utm, fbc, fbp} = useMemo(() => {
+    return getTrackingData(searchParams);
+  }, [searchParams]);
 
   const onSubmit = async (data) => {
     try {
       setSending(true);
-      data.phone = '521' + data.phone.replace(/^\+?((MX)?\s?(52)?)?\s?0?1?|\s|\(|\)|-/g, '');
-      const _fbc = getCookie('_fbc');
-      const _fbp = getCookie('_fbp');
+      data.whatsapp = '521' + data.phone.replace(/^\+?((MX)?\s?(52)?)?\s?0?1?|\s|\(|\)|-/g, '');
+      const payload = {...data, utm, fbp, fbc};
 
-      const payload = {...data, _fbc, _fbp};
-
-      const result = await fetch(info.optInWebHook, {
+      const result = await fetch(info.optInWebhook, {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: {
@@ -41,9 +43,7 @@ export default function OptInForm() {
         {email: data.email, phone: data.phone, externalID: id},
       );
       setCookie('lead', {...data, id});
-      // router.push(`/survey?id=${id}`);
-      router.push(`/thankyou`)
-
+      router.push(`/survey?id=${id}`);
     } catch {
       fbEvent(
         'CompleteRegistration',
@@ -55,7 +55,7 @@ export default function OptInForm() {
   };
 
   return (
-    <form className="flex flex-col w-full space-y-4" onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex flex-col w-full mt-0 space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <input
         {...register(
           'fullName',
@@ -63,7 +63,7 @@ export default function OptInForm() {
             required: true,
           },
         )}
-        className={errors.fullName ? '!border-brand-2 mt-12' : 'mt-12'}
+        className={errors.fullName ? '!border-brand-2' : ''}
         placeholder="tu nombre"
       />
       <input
@@ -77,7 +77,7 @@ export default function OptInForm() {
             },
           },
         )}
-        className={errors.email ? '!border-brand-2 mt-12' : 'mt-12'}
+        className={errors.email ? '!border-brand-2' : ''}
         placeholder="un email que si uses"
       />
       {errors.email && <span className="-ft-3 text-brand-2">Revisa tu email</span>}
@@ -86,7 +86,7 @@ export default function OptInForm() {
           'phone',
           {required: true, maxLength: 10, minLength: 10},
         )}
-        className={errors.phone ? '!border-brand-2 mt-12' : 'mt-12'}
+        className={errors.phone ? '!border-brand-2' : ''}
         onKeyDown={restrictNumber}
         placeholder="teléfono de WhatsApp"
       />
@@ -94,7 +94,7 @@ export default function OptInForm() {
 
       <button disabled={sending} className="w-full">
         {sending && <span className="animate-spin mr-4">+</span>}
-        {!sending ? 'Continuar' : 'Ahí vamos'}
+        {!sending ? 'Siguiente (→)' : 'Ahí vamos'}
       </button>
 
       <p className="-ft-3 mt-4 text-center">Al dar clic aceptas nuestra&nbsp;

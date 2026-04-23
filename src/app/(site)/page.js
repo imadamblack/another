@@ -111,6 +111,21 @@ const pasos = [
   },
 ];
 
+const testimonios = [
+  {
+    message: 'Llevo varios años invirtiendo en bienes raíces y ustedes, en lugar de venderme a huevo un proyecto, me presentaron opciones que ya habían revisado y que encajaban mejor. Y ya viste, en tres semanas firmamos. Ya vi el primer reporte de avance.',
+    nombre: 'Edgardo L.'
+  },
+  {
+    message: 'Mira, normalmente no tengo tiempo para ponerme a revisar desarrollos uno por uno. Me gustó que en la cita ya tenían filtrado lo que tenía sentido para mi. Todo muy fluido, sin presión y sin sorpresas.',
+    nombre: 'Omar M.'
+  },
+  {
+    message: 'Quería entrar al mundo de inversión inmobiliaria pero no sabía bien por dónde. La verdad me explicaste muy claro qué revisar y por qué el proyecto que elegí tenía sentido. Me sentí más segura y no como si estuviera apostando.',
+    nombre: 'Luz M.'
+  }
+];
+
 const proyectos = [
   {
     zona: 'Americana · GDL',
@@ -155,22 +170,27 @@ const faqs = [
   {
     question: '¿El servicio tiene costo para mí?',
     answer:
-      'No. Nuestro servicio es completamente gratuito para el inversionista. La comisión la recibimos directamente del desarrollador cuando se concreta una operación.',
+      'No. Nuestro servicio es gratuito para el inversionista. La comisión la recibimos del desarrollador cuando se concreta una operación. Si no hay cierre, no hay comisión, así que nuestro incentivo está alineado con el tuyo desde el inicio.',
   },
   {
     question: '¿Solo trabajan con preventas?',
     answer:
-      'Principalmente sí. La preventa puede ofrecer condiciones muy atractivas cuando el proyecto está bien estructurado. Ese "cuando" es exactamente lo que nosotros revisamos.',
+      'Principalmente sí. La preventa puede ser muy atractiva cuando el proyecto está bien estructurado. Ese "cuando" es exactamente lo que nosotros revisamos antes de mostrarte cualquier cosa.',
   },
   {
     question: '¿Trabajan con exclusividad?',
     answer:
-      'No. Mantenemos independencia para analizar y recomendar proyectos de distintos desarrolladores. Nuestro criterio no está atado a ninguno en particular.',
+      'No, y eso es intencional. Si tuviéramos exclusividad con alguien, nuestro criterio dejaría de ser independiente. Analizamos proyectos de distintos desarrolladores y solo presentamos los que pasan el filtro, sin importar quién los construye.',
   },
   {
     question: '¿Qué pasa si ningún proyecto se ajusta a mi perfil?',
     answer:
-      'Te lo decimos directamente. Preferimos esperar a tener una oportunidad que tenga sentido para ti, antes que empujarte hacia algo que no la tiene.',
+      'Te lo decimos directo. Preferimos esperar a tener algo que tenga sentido para ti antes que empujarte hacia una opción que no la tiene. Si hoy no hay nada para tu perfil, te lo decimos en la primera conversación.',
+  },
+  {
+    question: '¿Qué pasa si quiero entrar pero no tengo el 100% del capital?',
+    answer:
+      'Hay opciones. Parte del proceso incluye asesoría en crédito hipotecario, no para complicar la operación, sino para que la falta de liquidez inmediata no sea el único obstáculo entre tú y una buena inversión.',
   },
 ];
 
@@ -184,14 +204,14 @@ export default function Home() {
       {/* ── HERO ── */}
       <div className="px-10">
         {/* Top editorial row */}
-        <div className="grid md:grid-cols-3 items-end gap-0 py-12">
-          <h1 className="col-span-2 ft-11 font-bold text-[#1a1814]">
-            Antes de que inviertas en un depa, alguien debería revisar lo que no aparece en el render
+        <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-8 py-12">
+          <h1 className="col-span-2 ft-9 font-bold text-[#1a1814]">
+            En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms perrísimos pero la trayectoria, el fideicomiso y la licencia: inexistentes.
           </h1>
 
           {/* Tag — hidden on mobile */}
-          <p className="hidden md:block text-[10px] uppercase text-[#8a8680] px-8 self-end">
-            Anti-agencia<br/>inmobiliaria
+          <p className="uppercase text-[#8a8680] self-end">
+            Antes de que expongas tu capital, alguien debería revisar lo que no aparece en la presentación comercial.
           </p>
         </div>
 
@@ -221,9 +241,13 @@ export default function Home() {
             El vendedor te dice que quedan pocas unidades.<br/>
             Sientes que si no decides hoy, pierdes la oportunidad.<br/><br/>
             Lo que nadie te está contando es esto:<br/>
-            <span className="ft-2 font-bold">Un proyecto puede tener amenidades de lujo y una ubicación privilegiada… y aun así ser una mala inversión.</span><br/>
+            <span className="ft-2 font-bold">Esa presión es su modelo de negocio. <br/>No es tu oportunidad, es la de ellos.</span><br/><br/>
+            El trabajo del agente es vender unidades.<br/><br/>
+            El incentivo del desarrollador es cerrar preventas para fondear la construcción.<br/><br/>
+            Ninguno de los dos tiene el mandato de revisar si ese proyecto es una buena inversión para ti.<br/>
+            Nosotros sí.
           </p>
-          <CTA button="Da clic aquí"/>
+          <CTA button="Vamos platicando"/>
         </div>
       </section>
 
@@ -231,7 +255,7 @@ export default function Home() {
         <div className="container">
           <div className="reading-container">
             <h2>Porque lo que determina si tu dinero está seguro no es el render, es la
-              estructura real detrás del proyecto.</h2>
+              estructura real detrás del proyecto</h2>
           </div>
           {problemQuestions.map((row) => (
             <div
@@ -248,38 +272,40 @@ export default function Home() {
           ))}
         </div>
         <div className="reading-container">
-          <p>Estas preguntas casi nunca aparecen en la presentación comercial.</p>
-          <p>El trabajo es vender unidades, no analizar inversiones.</p>
-          <p>El incentivo es cerrar la operación, no proteger tu capital.</p>
-          <p>Eso es exactamente lo que nosotros hacemos diferente.</p>
+          <p>
+            Casi nadie hace estas preguntas.<br/><br/>
+            Nosotros sí las hacemos, y si las respuestas no nos convencen, el proyecto no entra al portafolio.<br/><br/>
+            Así de simple.
+          </p>
         </div>
         <div className="reading-container">
-          <CTA button="Da clic aquí"/>
+          <CTA button="Habla con un asesor"/>
         </div>
       </section>
 
-      {/* ── STATS ── */}
-      {/*<div className="px-10 py-20 grid grid-cols-1 md:grid-cols-[200px_1fr]">*/}
-      {/*  <div className="text-[12px] font-normal text-[#8a8680] pr-10 pt-1.5 leading-relaxed mb-6 md:mb-0">*/}
-      {/*    Solo vendemos lo que<br/>nosotros mismos<br/>invertiríamos*/}
-      {/*  </div>*/}
-      {/*  <div className="grid grid-cols-3 gap-0">*/}
-      {/*    {[*/}
-      {/*      {num: '+30', desc: 'proyectos analizados\nen preventa'},*/}
-      {/*      {num: '<50%', desc: 'pasaron nuestro\nfiltro de criterios'},*/}
-      {/*      {num: '$0', desc: 'costo para el\ninversionista'},*/}
-      {/*    ].map((s) => (*/}
-      {/*      <div key={s.num} className="pr-12">*/}
-      {/*        <div className="text-stat font-normal text-[#1a1814] tracking-[-0.03em] leading-none mb-2.5">*/}
-      {/*          {s.num}*/}
-      {/*        </div>*/}
-      {/*        <div className="text-[12px] font-light text-[#8a8680] leading-snug whitespace-pre-line">*/}
-      {/*          {s.desc}*/}
-      {/*        </div>*/}
-      {/*      </div>*/}
-      {/*    ))}*/}
-      {/*  </div>*/}
-      {/*</div>*/}
+      {/*── STATS ── */}
+      <div className="grid grid-cols-1 bg-neutral-900">
+        {/*<div className="text-[12px] font-normal text-[#8a8680] pr-10 pt-1.5 leading-relaxed mb-6 md:mb-0">*/}
+        {/*  Solo comercializamos lo que nosotros mismos invertiríamos*/}
+        {/*</div>*/}
+        <div className="container grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-neutral-100 p-0">
+          {[
+            {num: '+30', desc: `proyectos analizados\nen ${new Date().getFullYear()}`},
+            {num: '8', desc: 'pasaron nuestro\nfiltro de criterios'},
+            {num: '$0', desc: 'costo para el\ninversionista'},
+            {num: 'ZMG / TX', desc: 'mercados activos'},
+          ].map((s) => (
+            <div key={s.num} className="p-20 bg-neutral-900">
+              <div className="ft-8 font-normal text-neutral-100 tracking-[-0.03em] leading-none mb-2.5">
+                {s.num}
+              </div>
+              <div className="-ft-1 font-light text-neutral-300 leading-snug whitespace-pre-line">
+                {s.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ── CRITERIOS ── */}
       <section className="w-full py-20 border-t border-neutral-300">
@@ -304,7 +330,7 @@ export default function Home() {
             ))}
           </div>
           <div className="reading-container">
-            <CTA button="Da clic aquí"/>
+            <CTA button="Ver proyectos que pasaron el filtro"/>
           </div>
         </div>
       </section>
@@ -335,7 +361,7 @@ export default function Home() {
           ))}
         </div>
         <div className="reading-container">
-          <CTA button="Da clic aquí"/>
+          <CTA button="Solicita diagnóstico de inversión"/>
         </div>
       </section>
 
@@ -347,7 +373,7 @@ export default function Home() {
           </h3>
           <p className="text-neutral-100 leading-[1.8]">
             Nuestro servicio no tiene costo para el inversionista.<br/>
-            La comisión proviene directamente de los desarrolladores cuando se concreta la operación.<br/>
+            Tampoco damos exclusividad a desarrolladores para no ofrecerte una opción sesgada.<br/>
           </p>
         </div>
       </section>
@@ -399,7 +425,7 @@ export default function Home() {
 
       <section className="w-full py-20 border-y border-neutral-400 bg-neutral-800">
         <div className="reading-container">
-          <h2 className="font-bold text-neutral-50">Nuestros aliados comerciales</h2>
+          <h2 className="font-bold text-neutral-50">Partners con quienes hemos validado proyectos</h2>
         </div>
         <div className="container grid grid-cols-2 lg:grid-cols-4 gap-40 py-20">
           <div className="relative w-full aspect-video overflow-hidden">
@@ -414,6 +440,32 @@ export default function Home() {
           <div className="relative w-full aspect-video overflow-hidden">
             <Image src="/images/home/logos/ccu.webp" layout="fill" alt="CompraCasasUSA" objectFit="contain"/>
           </div>
+        </div>
+      </section>
+
+
+      {/* --- TESTIMONIOS --- */}
+      <section className="w-full py-20 border-t border-neutral-300">
+        <div className="reading-container">
+          <h2 className="font-bold">Ahora, nuestros inversionistas</h2>
+        </div>
+        <div className="container grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonios.map((t, i) => (
+            <div
+              className="bg-[#edeae3] p-8 flex flex-col"
+              key={i}
+            >
+              <p className="mb-8 flex-grow">
+                {t.message}
+              </p>
+              <p className="-ft-1 mt-auto font-semibold text-right">
+                — {t.nombre}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="reading-container">
+          <CTA button="Dale clic, platiquemos"/>
         </div>
       </section>
 
@@ -434,16 +486,19 @@ export default function Home() {
       <section id="contact" className="w-full py-20">
         <div className="reading-container">
           <h2 className="font-bold">
-            Ya llegaste hasta acá, programa una cita para revisar opciones de inversión que sí valen la pena
+            Ya llegaste hasta acá, ya sabes dos-tres cosas más de las que sabías hace 5 minutos
           </h2>
           <p className="">
-            En esta asesoría te mostramos:<br/>
+            El siguiente paso es una sesión sin costo y sin compromiso donde revisamos juntos:<br/>
             — desarrollos que ya pasaron nuestro filtro legal y financiero<br/>
             — análisis de inversión por proyecto<br/>
             — oportunidades activas en el mercado<br/>
           </p>
+          <p>
+            No te vamos a presionar.<br/>
+            Si no hay algo para ti hoy, te lo decimos en los primeros minutos.
+          </p>
           <OptInForm/>
-
         </div>
       </section>
     </>

@@ -43,3 +43,27 @@ export default function fbEvent(
     },
   }).then(res => res.json()).catch(err => console.log(err));
 }
+
+// ─── Google Ads Conversion ────────────────────────────────────────────────────
+export function gtagSendEvent(conversionId, data = {}) {
+  if (typeof gtag === 'undefined') return false;
+
+  const fullName = data.fullName ?? '';
+  const phone = data.phone ?? '';
+  const [firstName = '', lastName = ''] = fullName.split(' ');
+
+  gtag('set', 'user_data', {
+    phone_number: phone.trim(),
+    address: {
+      first_name: firstName.trim(),
+      last_name: lastName.trim(),
+    },
+  });
+
+  gtag('event', 'conversion', {
+    send_to: `${process.env.NEXT_PUBLIC_GOOGLE_ADS_ID}/${conversionId}`,
+    event_callback: () => {},
+  });
+
+  return false;
+}

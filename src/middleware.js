@@ -1,10 +1,17 @@
 import { NextResponse } from 'next/server';
 
 export function middleware(req) {
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set('x-pathname', req.nextUrl.pathname)
+
   let _fbc = req.cookies.get('_fbc');
   const fbclid = req.nextUrl.searchParams.get('fbclid');
 
-  const res = NextResponse.next();
+  const res = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 
   if (!_fbc && fbclid) {
     const date = new Date();
