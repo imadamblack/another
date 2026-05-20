@@ -1,5 +1,6 @@
 import { info } from '../../info';
 import notoriovs from '/public/notoriovs.png'
+import logo from '/public/logo-outline.svg'
 import Image from 'next/image';
 
 export default function Footer() {
@@ -10,7 +11,10 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row gap-2">
             <p className="text-neutral-50">Todos los derechos reservados.</p>
             <div className="flex gap-2 mr-3">
-              <p className="text-neutral-50">{info.companyName}</p>
+              <div
+                 className="relative w-[10rem] top-[-0.1rem]">
+                <Image src={logo} className="invert" alt="Another Real Estate Agency"/>
+              </div>
               <p className="relative material-icons text-neutral-50 top-2 !my-0">close</p>
               <a href="https://marketing.notoriovs.com"
                  target="_blank"

@@ -220,3 +220,16 @@ ol {
 .faq-answer.open {
   max-height: 200px;
 }
+
+.quot-box {
+ & :before{
+   @apply text-brand-1;
+   content: '"';
+   font-size: 10rem;
+   position: absolute;
+   top: -3rem;
+   left: 2rem;
+   line-height: 1;
+   font-style: normal;
+ }
+}

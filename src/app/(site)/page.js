@@ -205,9 +205,12 @@ export default function Home() {
       <div className="px-10">
         {/* Top editorial row */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-8 py-12">
-          <h1 className="col-span-2 ft-9 font-bold text-[#1a1814]">
-            En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms perrísimos pero la trayectoria, el fideicomiso y la licencia: inexistentes.
-          </h1>
+          <div className="col-span-2">
+            <p className="mono -ft-2 mb-4 text-neutral-400">ANTI-AGENCIA INMOBILIARIA · ZMG + HOUSTON</p>
+            <h1 className="ft-9 font-bold text-[#1a1814]">
+              En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms perrísimos pero la trayectoria, el fideicomiso y la licencia: inexistentes...
+            </h1>
+          </div>
 
           {/* Tag — hidden on mobile */}
           <p className="uppercase text-[#8a8680] self-end">
@@ -413,7 +416,7 @@ export default function Home() {
                 <div className="flex gap-4 my-8">
                   {p.validators.map(v => (
                     // eslint-disable-next-line react/jsx-key
-                    <p className="py-1 px-2 border-2 -ft-3 font-medium tracking-wide">{v} (OK)</p>
+                    <p className="py-1 px-2 border-2 -ft-3 font-medium tracking-wide">{v} ✓</p>
                   ))}
                 </div>
                 <CTA button={`Me interesa ${p.name}`} cta={`Programa una cita para conocer más sobre ${p.name}`}/>

@@ -14,7 +14,7 @@ export default function Header() {
       className="px-10 w-full h-[6rem] flex justify-between items-center bg-neutral-100/50 backdrop-blur-md sticky top-0 z-50 shadow-md">
       <div className="relative w-[16rem] md:w-[20rem] aspect-[4/1] flex justify-start items-center gap-7 overflow-hidden">
         <Link href="/">
-          <Image src="/images/svg/ANTR-Logo-2.svg" layout="fill" alt="Another Real Estate Agency" objectFit="contain"/>
+          <Image src="/logo.svg" layout="fill" alt="Another Real Estate Agency" objectFit="contain"/>
         </Link>
       </div>
 
