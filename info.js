@@ -28,5 +28,5 @@ export const info = {
   },
   privacyNotice: '/privacy-notice',
   optInWebhook: process.env.NODE_ENV === 'dev' ? 'https://n8n.notoriovs.com/webhook-test/b2295118-c28e-40b7-a771-2704c6a724d3' : 'https://n8n.notoriovs.com/webhook/b2295118-c28e-40b7-a771-2704c6a724d3',
-  surveyWebhook: ''
+  schedulerWebhook: 'https://calendly.com/another-info/30min'
 }
