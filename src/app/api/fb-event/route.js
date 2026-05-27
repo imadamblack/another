@@ -19,7 +19,7 @@ export async function POST(request) {
     const userData = {
       em: user?.em ? [hash(user.em)] : undefined,
       ph: user?.ph ? [hash(user.ph)] : undefined,
-      external_id: user?.externalID ? hash(user.externalID) : undefined,
+      external_id: user?.externalID ? hash(String(user.externalID)) : undefined,
       fbc,
       fbp,
       client_user_agent: userAgent,
