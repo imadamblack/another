@@ -3,15 +3,15 @@ export const info = {
   companyName: 'Another',
   description: 'Inversión Inmobiliaria en Preventa',
   email: {
-    sender: 'info@notoriovs.com',
+    sender: 'info@another.mx',
     recipients: [
-      'info@notoriovs.com',
+      'info@another.mx',
     ],
     subject: 'Nuevo prospecto Another'
   },
-  phoneNumber: '+523317904027',
+  phoneNumber: '+523322598229',
   whatsapp: {
-    value: '+523317904027',
+    value: '+523322598229',
     message: 'Si jaló'
   },
   social: {

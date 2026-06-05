@@ -311,7 +311,7 @@ export default function Home() {
       </div>
 
       {/* ── CRITERIOS ── */}
-      <section className="w-full py-20 border-t border-neutral-300">
+      <section id="criterios" className="w-full py-20 border-t border-neutral-300">
         <div className="container">
           <div className="reading-container mb-12">
             <h2 className="font-bold">Revisamos, filtramos y omitimos desarrollos que no pasan la prueba</h2>
