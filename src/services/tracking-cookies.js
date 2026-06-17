@@ -64,6 +64,7 @@ export default function getTrackingData(searchParams) {
     lead: {
       id,
       fullName: lead?.fullName ?? '',
+      email: lead?.email ?? '',
       phone: lead?.phone ?? '',
       whatsapp: lead?.whatsapp ?? '',
       sheetRow: lead?.sheetRow ?? '',

@@ -1,7 +1,7 @@
 'use client';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useEffect, useMemo, useState } from 'react';
-import { setCookie, getCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import { useSearchParams, useRouter } from 'next/navigation';
 import StepRenderer from '@/components/stepRenderer';
 import fbEvent, { gtagSendEvent } from '@/services/fbEvents';
@@ -73,12 +73,12 @@ const formSteps = [
       {value: 'providencia', label: 'Providencia'},
       {value: 'arcos-vallarta', label: 'Arcos Vallarta'},
       {value: 'chapultepec', label: 'Chapultepec'},
-      {value: 'ciudad-granja', label: 'Ciudad Granja'},
-      {value: 'country', label: 'El Country'},
-      {value: 'expo', label: 'Expo Guadalajara'},
-      {value: 'la-perla', label: 'La Perla',},
+      // {value: 'ciudad-granja', label: 'Ciudad Granja'},
+      // {value: 'country', label: 'El Country'},
+      // {value: 'expo', label: 'Expo Guadalajara'},
+      // {value: 'la-perla', label: 'La Perla',},
       {value: 'zona-real', label: 'Zona Real'},
-      {value: 'punto-sur', label: 'Punto Sur',},
+      // {value: 'punto-sur', label: 'Punto Sur',},
       {value: 'houston', label: 'Houston',},
     ],
     cols: 2,
@@ -229,7 +229,7 @@ export default function Survey() {
         {email: payload.email, phone: payload.whatsapp}
       );
 
-      setCookie('lead', {...data, id: res.id});
+      setCookie('lead', {...data, ...lead, id: res.id});
 
       await router.push('/thankyou');
 
