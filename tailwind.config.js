@@ -9,10 +9,10 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          1: '#cccc00',
-          2: '#ff00ff',
-          3: '#00ff00',
-          4: '#dedb4f',
+          1: '#10312c',
+          2: '#ff4510',
+          3: '#00A661',
+          4: '#EDEAE4',
         }
       },
       container: {

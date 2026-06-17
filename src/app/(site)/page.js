@@ -128,26 +128,24 @@ const testimonios = [
 
 const proyectos = [
   {
-    zona: 'Americana · GDL',
-    name: 'Scala Towers',
-    price: '$2.9 mdp',
-    timeframe: '24 meses',
+    zona: 'Vallarta Norte · GDL',
+    name: 'Altare',
+    price: '$2.2 mdp',
+    timeframe: '30 meses',
     validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
-    desc: 'Estructura legal y financiera verificada. Solicita los detalles y nuestra evaluación completa.',
-    badge: 'Disponible',
-    badgeClass: 'bg-[#1a1814] text-[#edeae3]',
+    desc: 'Suites a un costado de La Matera sobre Av. México',
+    badge: null,
     dim: false,
-    img: 'scala',
+    img: 'altare',
   },
   {
     zona: 'Americana · GDL',
     name: 'Torre XII',
     price: '$3.2 mdp',
-    timeframe: '30 meses',
+    timeframe: '24 meses',
     validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
-    desc: 'Estructura legal y financiera verificada. Solicita los detalles y nuestra evaluación completa.',
-    badge: 'Disponible',
-    badgeClass: 'bg-[#1a1814] text-[#edeae3]',
+    desc: 'Lofts y Suites ideales para Airbnb',
+    badge: 'Últimas unidades',
     dim: false,
     img: 'torrexii',
   },
@@ -158,11 +156,22 @@ const proyectos = [
     timeframe: '6 meses',
     validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
     stage: 'En construcción',
-    desc: 'Constantemente revisamos nuevos desarrollos. Si no hay algo para tu perfil hoy, te lo decimos.',
-    badge: 'Próximamente',
-    badgeClass: 'border border-[#1a1814]/10 text-[#8a8680]',
+    desc: 'La ciudad más segura de USA en 2025',
+    badge: null,
     dim: false,
     img: 'meadows',
+  },
+  {
+    zona: 'Camino Real · ZAP',
+    name: 'Rock Residence',
+    price: '$3.3 mdp',
+    timeframe: '30 meses',
+    validators: ['Legal', 'Finanzas', 'Licencias', 'Trayectoria'],
+    stage: 'En construcción',
+    desc: 'Parte del complejo Hard Rock Hotel',
+    badge: null,
+    dim: false,
+    img: 'rockresidence',
   },
 ];
 
@@ -208,7 +217,7 @@ export default function Home() {
           <div className="col-span-2">
             <p className="mono -ft-2 mb-4 text-neutral-400">ANTI-AGENCIA INMOBILIARIA · ZMG + HOUSTON</p>
             <h1 className="ft-9 font-bold text-[#1a1814]">
-              En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms perrísimos pero la trayectoria, el fideicomiso y la licencia: inexistentes...
+              En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms padrísimos pero con trayectorias, fideicomisos y licencias: inexistentes...
             </h1>
           </div>
 
@@ -389,7 +398,7 @@ export default function Home() {
           <p>Desarrollos en la Zona Metropolitana de Guadalajara y otros mercados estratégicos.</p>
         </div>
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 md:container gap-8">
           {proyectos.map((p) => (
             <div
               key={p.zona}
@@ -398,6 +407,9 @@ export default function Home() {
             >
               <div className="relative w-full aspect-video">
                 <Image src={`/images/home/${p.img}.jpg`} fill alt={p.name} objectFit="cover"/>
+                {p.badge &&
+                  <div className="absolute top-8 right-8 bg-brand-2 px-6 py-1 ft-0 font-bold text-brand-4">{p.badge}</div>
+                }
               </div>
 
               <div className="flex flex-col pt-8 pb-16">
@@ -407,6 +419,9 @@ export default function Home() {
                 <h3 className="ft-6 !my-0 font-semibold group-hover:opacity-50">
                   {p.name}
                 </h3>
+                <p className="group-hover:opacity-50 pb-4">
+                  {p.desc}
+                </p>
                 <p className="font-semibold group-hover:opacity-50">
                   → Desde {p.price}
                 </p>
