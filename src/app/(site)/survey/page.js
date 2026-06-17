@@ -97,19 +97,19 @@ const formSteps = [
     ],
     cols: 1,
   },
-  {
-    type: 'radio',
-    name: 'deposit',
-    title: '¿Estarías dispuesto a separar una unidad con un apartado inicial?',
-    description: 'El apartado oscila entre 1% y 3% del valor total, asegura tu lugar mientras se define el enganche',
-    inputOptions: { required: 'Selecciona una por favor' },
-    options: [
-      { value: 'si', label: 'Sí, si el proyecto me convence' },
-      { value: 'tal_vez', label: 'Depende de las condiciones' },
-      { value: 'no', label: 'Prefiero esperar a tener todo definido' },
-    ],
-    cols: 1,
-  },
+  // {
+  //   type: 'radio',
+  //   name: 'deposit',
+  //   title: '¿Estarías dispuesto a separar una unidad con un apartado inicial?',
+  //   description: 'El apartado oscila entre 1% y 3% del valor total, asegura tu lugar mientras se define el enganche',
+  //   inputOptions: { required: 'Selecciona una por favor' },
+  //   options: [
+  //     { value: 'si', label: 'Sí, si el proyecto me convence' },
+  //     { value: 'tal_vez', label: 'Depende de las condiciones' },
+  //     { value: 'no', label: 'Prefiero esperar a tener todo definido' },
+  //   ],
+  //   cols: 1,
+  // },
   {
     type: 'radio',
     name: 'experience',
