@@ -208,8 +208,6 @@ export default function Survey() {
   const onSubmit = async (data) => {
     setSending(true);
     try {
-      data.whatsapp = '521' + lead.phone?.replace(/^(MX)?\+?(52)?\s?0?1?|\s|\(|\)|-|[a-zA-Z]/g, '');
-
       const payload = {...lead, ...data};
 
       const res = await fetch(info.optInWebhook, {
