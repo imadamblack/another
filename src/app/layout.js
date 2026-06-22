@@ -18,7 +18,7 @@ export default function RootLayout({children}) {
       <script src="/typetura.js" type="text/javascript"/>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-      <link rel="icon" type="image/png" href="/images/ANTR-ico.png"/>
+      <link rel="icon" type="image/png" href="/favicon.png"/>
       {/*<title>{metadata.title}</title>*/}
     </head>
     <body>

@@ -222,7 +222,7 @@ export default function Home() {
         {/* Top editorial row */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-8 py-12">
           <div className="col-span-2">
-            <p className="mono -ft-2 mb-4 text-neutral-400">OTRA AGENCIA INMOBILIARIA EN ZMG</p>
+            <p className="mono -ft-2 mb-4 text-neutral-400">«OTRA» AGENCIA INMOBILIARIA EN ZMG</p>
             <h1 className="ft-9 font-bold text-[#1a1814]">
               {/*En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms padrísimos pero con trayectorias, fideicomisos y licencias: inexistentes...*/}
               {/*Si planeas invertir en una preventa en {new Date().getFullYear()}, hazlo con respaldo jurídico y una proyección real del ROI*/}
