@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import scrollDepth from '@/utils/scrollDepth';
 import OptInForm from '@/components/opt-in-form';
 
 function FaqItem({question, answer}) {
@@ -40,7 +41,7 @@ function FaqItem({question, answer}) {
 function CTA({button = 'Contáctanos', cta = 'Programa una cita para conocer las mejores oportunidades de inversión'}) {
   return (
     <div className="w-full">
-      <Link href="#contact" className="button !w-full mb-4">{button} (→)</Link>
+      <Link href="#contact" className="button !bg-brand-5 !text-brand-4 -ft-1 hover:!bg-brand-1 !w-full mb-4">{button} (→)</Link>
       <div className="text-center -ft-2">{cta}</div>
     </div>
   );
@@ -207,6 +208,12 @@ const faqs = [
    Page
 ───────────────────────────────────────── */
 export default function Home() {
+  useEffect(() => {
+    scrollDepth({
+      values: [25, 50, 75, 100],
+      callback: (value) => fbq('trackCustom', 'Scroll', {depth: value}),
+    })
+  })
 
   return (
     <>
@@ -215,15 +222,18 @@ export default function Home() {
         {/* Top editorial row */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-8 py-12">
           <div className="col-span-2">
-            <p className="mono -ft-2 mb-4 text-neutral-400">ANTI-AGENCIA INMOBILIARIA · ZMG + HOUSTON</p>
+            <p className="mono -ft-2 mb-4 text-neutral-400">OTRA AGENCIA INMOBILIARIA EN ZMG</p>
             <h1 className="ft-9 font-bold text-[#1a1814]">
-              En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms padrísimos pero con trayectorias, fideicomisos y licencias: inexistentes...
+              {/*En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms padrísimos pero con trayectorias, fideicomisos y licencias: inexistentes...*/}
+              {/*Si planeas invertir en una preventa en {new Date().getFullYear()}, hazlo con respaldo jurídico y una proyección real del ROI*/}
+              Accede a los mejores desarrollos en preventa del {new Date().getFullYear()} con certeza jurídica y proyecciones de ROI documentadas
             </h1>
           </div>
 
           {/* Tag — hidden on mobile */}
           <p className="uppercase text-[#8a8680] self-end">
-            Antes de que expongas tu capital, alguien debería revisar lo que no aparece en la presentación comercial.
+            {/*Antes de que expongas tu capital, alguien debería revisar lo que no aparece en la presentación comercial.*/}
+            Seleccionamos y validamos desarrollos en preventa con alto potencial de plusvalía, certeza jurídica y financiera para que decidas con información y no con labia del vendedor.
           </p>
         </div>
 
@@ -232,9 +242,9 @@ export default function Home() {
           <Image src="/images/home/hero.jpg" alt="Interior" fill style={{objectFit: 'cover'}} priority/>
           <a
             href="#proyectos"
-            className="absolute bottom-9 right-14 w-[120px] h-[120px] rounded-full bg-[#edeae3] flex items-center justify-center text-center no-underline text-[#1a1814] text-[11px] font-semibold tracking-[0.1em] uppercase leading-snug shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition-all duration-300 hover:bg-[#1a1814] hover:text-[#edeae3] hover:scale-105"
+            className="absolute bottom-9 right-14 px-10 py-6 bg-[#edeae3] flex items-center justify-center text-center no-underline text-[#1a1814] text-[11px] font-semibold tracking-[0.1em] uppercase leading-snug shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition-all duration-300 hover:bg-[#1a1814] hover:text-[#edeae3] hover:scale-105"
           >
-            VER<br/>SELECCIÓN
+            VER PROYECTOS
           </a>
         </div>
       </div>
@@ -259,7 +269,7 @@ export default function Home() {
             Ninguno de los dos tiene el mandato de revisar si ese proyecto es una buena inversión para ti.<br/>
             Nosotros sí.
           </p>
-          <CTA button="Vamos platicando"/>
+          <CTA button="Contáctanos, da clic"/>
         </div>
       </section>
 
@@ -291,7 +301,7 @@ export default function Home() {
           </p>
         </div>
         <div className="reading-container">
-          <CTA button="Habla con un asesor"/>
+          <CTA button="Quieres saber más? Clic"/>
         </div>
       </section>
 
@@ -342,7 +352,7 @@ export default function Home() {
             ))}
           </div>
           <div className="reading-container">
-            <CTA button="Ver proyectos que pasaron el filtro"/>
+            <CTA button="Agenda una cita"/>
           </div>
         </div>
       </section>
@@ -373,7 +383,7 @@ export default function Home() {
           ))}
         </div>
         <div className="reading-container">
-          <CTA button="Solicita diagnóstico de inversión"/>
+          <CTA button="Programa tu sesión, clic"/>
         </div>
       </section>
 
@@ -504,13 +514,10 @@ export default function Home() {
       <section id="contact" className="w-full py-20">
         <div className="reading-container">
           <h2 className="font-bold">
-            Ya llegaste hasta acá, ya sabes dos-tres cosas más de las que sabías hace 5 minutos
+            Agenda tu diagnóstico de inversión y recibe un análisis de los desarrollos disponibles para tu perfil, sin costo.
           </h2>
           <p className="">
-            El siguiente paso es una sesión sin costo y sin compromiso donde revisamos juntos:<br/>
-            — desarrollos que ya pasaron nuestro filtro legal y financiero<br/>
-            — análisis de inversión por proyecto<br/>
-            — oportunidades activas en el mercado<br/>
+            Ya tienes el contexto. El siguiente paso es una sesión de 30 minutos donde revisamos qué opciones se ajustan a tu perfil.
           </p>
           <p>
             No te vamos a presionar.<br/>
