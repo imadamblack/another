@@ -31,10 +31,10 @@ export default function Header() {
       </div>
 
       <a
-        href="#proyectos"
+        href="#contact"
         className="text-[11px] font-medium tracking-[0.1em] uppercase text-[#1a1814] no-underline border-b border-[#1a1814] pb-[2px] flex items-center gap-1.5 hover:text-[#8a8680] hover:border-[#8a8680] transition-colors"
       >
-        Ver proyectos
+        Agenda
         <ArrowIcon/>
       </a>
     </header>

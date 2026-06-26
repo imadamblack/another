@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import scrollDepth from '@/utils/scrollDepth';
 import OptInForm from '@/components/opt-in-form';
+import fbEvent from '@/services/fbEvents';
 
 function FaqItem({question, answer}) {
   const [open, setOpen] = useState(false);
@@ -41,7 +42,8 @@ function FaqItem({question, answer}) {
 function CTA({button = 'Contáctanos', cta = 'Programa una cita para conocer las mejores oportunidades de inversión'}) {
   return (
     <div className="w-full">
-      <Link href="#contact" className="button !bg-brand-5 !text-brand-4 -ft-1 hover:!bg-brand-1 !w-full mb-4">{button} (→)</Link>
+      <Link href="#contact"
+            className="button !bg-brand-5 !text-brand-4 -ft-1 hover:!bg-brand-1 !w-full mb-4">{button} (→)</Link>
       <div className="text-center -ft-2">{cta}</div>
     </div>
   );
@@ -115,16 +117,16 @@ const pasos = [
 const testimonios = [
   {
     message: 'Llevo varios años invirtiendo en bienes raíces y ustedes, en lugar de venderme a huevo un proyecto, me presentaron opciones que ya habían revisado y que encajaban mejor. Y ya viste, en tres semanas firmamos. Ya vi el primer reporte de avance.',
-    nombre: 'Edgardo L.'
+    nombre: 'Edgardo L.',
   },
   {
     message: 'Mira, normalmente no tengo tiempo para ponerme a revisar desarrollos uno por uno. Me gustó que en la cita ya tenían filtrado lo que tenía sentido para mi. Todo muy fluido, sin presión y sin sorpresas.',
-    nombre: 'Omar M.'
+    nombre: 'Omar M.',
   },
   {
     message: 'Quería entrar al mundo de inversión inmobiliaria pero no sabía bien por dónde. La verdad me explicaste muy claro qué revisar y por qué el proyecto que elegí tenía sentido. Me sentí más segura y no como si estuviera apostando.',
-    nombre: 'Luz M.'
-  }
+    nombre: 'Luz M.',
+  },
 ];
 
 const proyectos = [
@@ -211,9 +213,9 @@ export default function Home() {
   useEffect(() => {
     scrollDepth({
       values: [25, 50, 75, 100],
-      callback: (value) => fbq('trackCustom', `Scroll Depth: ${value}`),
-    })
-  })
+      callback: (value) => fbEvent(`Scroll Depth: ${value}`),
+    });
+  });
 
   return (
     <>
@@ -222,29 +224,31 @@ export default function Home() {
         {/* Top editorial row */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-8 py-12">
           <div className="col-span-2">
-            <p className="mono -ft-2 mb-4 text-neutral-400">«OTRA» AGENCIA INMOBILIARIA EN ZMG</p>
+            {/*<p className="mono -ft-2 mb-4 text-neutral-400">«OTRA» AGENCIA INMOBILIARIA EN ZMG</p>*/}
             <h1 className="ft-9 font-bold text-[#1a1814]">
               {/*En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms padrísimos pero con trayectorias, fideicomisos y licencias: inexistentes...*/}
-              {/*Si planeas invertir en una preventa en {new Date().getFullYear()}, hazlo con respaldo jurídico y una proyección real del ROI*/}
-              Accede a los mejores desarrollos en preventa del {new Date().getFullYear()} con certeza jurídica y proyecciones de ROI documentadas
+              {/*Accede a los mejores desarrollos en preventa del {new Date().getFullYear()} con certeza jurídica y proyecciones de ROI documentadas*/}
+              La ZMG está saturada de preventas.
+              La mayoría no merece tu dinero.
+              Este es el portafolio de las que sí.
             </h1>
           </div>
 
           {/* Tag — hidden on mobile */}
           <p className="uppercase text-[#8a8680] self-end">
             {/*Antes de que expongas tu capital, alguien debería revisar lo que no aparece en la presentación comercial.*/}
-            Seleccionamos y validamos desarrollos en preventa con alto potencial de plusvalía, certeza jurídica y financiera para que decidas con información y no con labia del vendedor.
+            Solo listamos proyectos que pasaron nuestra revisión legal, financiera y de trayectoria.
           </p>
         </div>
 
         {/* Hero image */}
-        <div className="delay-1 relative w-full overflow-hidden" style={{height: 'clamp(340px, 50vw, 580px)'}}>
+        <div className="delay-1 relative w-full overflow-hidden" style={{height: 'clamp(280px, 50vw, 580px)'}}>
           <Image src="/images/home/hero.jpg" alt="Interior" fill style={{objectFit: 'cover'}} priority/>
           <a
-            href="#proyectos"
-            className="absolute bottom-9 right-14 px-10 py-6 bg-[#edeae3] flex items-center justify-center text-center no-underline text-[#1a1814] text-[11px] font-semibold tracking-[0.1em] uppercase leading-snug shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition-all duration-300 hover:bg-[#1a1814] hover:text-[#edeae3] hover:scale-105"
+            href="#contact"
+            className="absolute bottom-8 inset-x-8 px-10 py-6 bg-brand-2 flex items-center justify-center text-center no-underline text-brand-4 text-[11px] font-semibold tracking-[0.1em] uppercase leading-snug shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition-all duration-300 hover:bg-brand-1 hover:text-[#edeae3]"
           >
-            VER PROYECTOS
+            Habla con un asesor
           </a>
         </div>
       </div>
@@ -418,7 +422,8 @@ export default function Home() {
               <div className="relative w-full aspect-video">
                 <Image src={`/images/home/${p.img}.jpg`} fill alt={p.name} objectFit="cover"/>
                 {p.badge &&
-                  <div className="absolute top-8 right-8 bg-brand-2 px-6 py-1 ft-0 font-bold text-brand-4">{p.badge}</div>
+                  <div
+                    className="absolute top-8 right-8 bg-brand-2 px-6 py-1 ft-0 font-bold text-brand-4">{p.badge}</div>
                 }
               </div>
 
@@ -514,12 +519,12 @@ export default function Home() {
       <section id="contact" className="w-full py-20">
         <div className="reading-container">
           <h2 className="font-bold">
-            Agenda tu diagnóstico de inversión y recibe un análisis de los desarrollos disponibles para tu perfil, sin costo.
+            Programa una sesión para explorar los proyectos inmobiliarios disponibles para tu perfil, sin
+            costo.
           </h2>
           <p className="">
-            Ya tienes el contexto. El siguiente paso es una sesión de 30 minutos donde revisamos qué opciones se ajustan a tu perfil.
-          </p>
-          <p>
+            Ayúdanos con tus datos y a responder un par de preguntas para programar tu sesión de exploración.
+            <br/><br/>
             No te vamos a presionar.<br/>
             Si no hay algo para ti hoy, te lo decimos en los primeros minutos.
           </p>

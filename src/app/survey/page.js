@@ -5,7 +5,7 @@ import { setCookie } from 'cookies-next';
 import { useSearchParams, useRouter } from 'next/navigation';
 import StepRenderer from '@/components/stepRenderer';
 import fbEvent, { gtagSendEvent } from '@/services/fbEvents';
-import { info } from '/info';
+import { info } from '/Users/adamblack/Sites/another/info';
 import { motion, AnimatePresence } from 'framer-motion';
 import getTrackingData from '@/services/tracking-cookies';
 
@@ -126,7 +126,7 @@ const formSteps = [
   // {
   //   type: 'radio',
   //   name: 'asistencia',
-  //   title: '¿Estarías dispuesto a agendar tu diagnóstico de inversión esta semana?',
+  //   title: '¿Estarías dispuesto a agendar tu sesión de exploración esta semana?',
   //   inputOptions: { required: 'Selecciona una por favor' },
   //   options: [
   //     { value: 'si_agenda', label: 'Sí, quiero agendarlo esta semana' },

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { info } from '../../info';
 import { useForm } from 'react-hook-form';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { getCookie, setCookie } from 'cookies-next';
+import { setCookie } from 'cookies-next';
 import { useMemo, useState } from 'react';
 import { restrictNumber, emailRegExp } from '@/utils/formValidators';
 import fbEvent from '@/services/fbEvents';
@@ -92,9 +92,9 @@ export default function OptInForm() {
       />
       {errors.phone && <span className="-ft-3 text-brand-2">Solo 10 dígitos sin espacios</span>}
 
-      <button disabled={sending} className="w-full">
+      <button disabled={sending} className="!bg-brand-2 w-full">
         {sending && <span className="animate-spin mr-4">+</span>}
-        {!sending ? 'Siguiente (→)' : 'Ahí vamos'}
+        {!sending ? 'Comenzar (→)' : 'Ahí vamos'}
       </button>
 
       <p className="-ft-3 mt-4 text-center">Al dar clic aceptas nuestra&nbsp;
