@@ -5,7 +5,7 @@ import { setCookie } from 'cookies-next';
 import { useSearchParams, useRouter } from 'next/navigation';
 import StepRenderer from '@/components/stepRenderer';
 import fbEvent, { gtagSendEvent } from '@/services/fbEvents';
-import { info } from '/Users/adamblack/Sites/another/info';
+import { info } from '../../../info';
 import { motion, AnimatePresence } from 'framer-motion';
 import getTrackingData from '@/services/tracking-cookies';
 
