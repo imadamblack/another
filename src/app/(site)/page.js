@@ -224,10 +224,7 @@ export default function Home() {
         {/* Top editorial row */}
         <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-8 py-12">
           <div className="col-span-2">
-            {/*<p className="mono -ft-2 mb-4 text-neutral-400">«OTRA» AGENCIA INMOBILIARIA EN ZMG</p>*/}
-            <h1 className="ft-9 font-bold text-[#1a1814]">
-              {/*En {new Date().getFullYear()} la ZMG está llena de preventas inmobiliarias con renders impecables y showrooms padrísimos pero con trayectorias, fideicomisos y licencias: inexistentes...*/}
-              {/*Accede a los mejores desarrollos en preventa del {new Date().getFullYear()} con certeza jurídica y proyecciones de ROI documentadas*/}
+            <h1 className="ft-8 font-bold text-[#1a1814]">
               La ZMG está saturada de preventas.
               La mayoría no merece tu dinero.
               Este es el portafolio de las que sí.
