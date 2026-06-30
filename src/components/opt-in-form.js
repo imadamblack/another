@@ -8,7 +8,7 @@ import { restrictNumber, emailRegExp } from '@/utils/formValidators';
 import fbEvent from '@/services/fbEvents';
 import getTrackingData from '@/services/tracking-cookies';
 
-export default function OptInForm() {
+export default function OptInForm({lastClick}) {
   const [sending, setSending] = useState(false);
   const router = useRouter();
   const {
@@ -21,11 +21,13 @@ export default function OptInForm() {
     return getTrackingData(searchParams);
   }, [searchParams]);
 
+  console.log('URL PARAMS', lastClick, utm, fbc, fbp);
+
   const onSubmit = async (data) => {
     try {
       setSending(true);
       data.whatsapp = '521' + data.phone.replace(/^\+?((MX)?\s?(52)?)?\s?0?1?|\s|\(|\)|-/g, '');
-      const payload = {...data, utm, fbp, fbc};
+      const payload = {...data, lastClick, utm, fbp, fbc};
 
       const result = await fetch(info.optInWebhook, {
         method: 'POST',

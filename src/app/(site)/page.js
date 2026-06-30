@@ -39,11 +39,20 @@ function FaqItem({question, answer}) {
   );
 }
 
-function CTA({button = 'Contáctanos', cta = 'Programa una cita para conocer las mejores oportunidades de inversión'}) {
+function CTA({
+  button = 'Contáctanos',
+  cta = 'Programa una cita para conocer las mejores oportunidades de inversión',
+  onClick = () => {}
+}) {
   return (
     <div className="w-full">
-      <Link href="#contact"
-            className="button !bg-brand-5 !text-brand-4 -ft-1 hover:!bg-brand-1 !w-full mb-4">{button} (→)</Link>
+      <Link
+        href="#contact"
+        className="button !bg-brand-5 !text-brand-4 -ft-1 hover:!bg-brand-1 !w-full mb-4"
+        onClick={onClick}
+      >
+        {button} (→)
+      </Link>
       <div className="text-center -ft-2">{cta}</div>
     </div>
   );
@@ -210,6 +219,7 @@ const faqs = [
    Page
 ───────────────────────────────────────── */
 export default function Home() {
+  const [lastClick, setLastClick] = useState('hero');
   useEffect(() => {
     scrollDepth({
       values: [25, 50, 75, 100],
@@ -242,10 +252,11 @@ export default function Home() {
         <div className="delay-1 relative w-full overflow-hidden" style={{height: 'clamp(280px, 50vw, 580px)'}}>
           <Image src="/images/home/hero.jpg" alt="Interior" fill style={{objectFit: 'cover'}} priority/>
           <a
-            href="#contact"
+            href="#proyectos"
+            onClick={() => setLastClick('hero')}
             className="absolute bottom-8 inset-x-8 px-10 py-6 bg-brand-2 flex items-center justify-center text-center no-underline text-brand-4 text-[11px] font-semibold tracking-[0.1em] uppercase leading-snug shadow-[0_4px_24px_rgba(0,0,0,0.10)] transition-all duration-300 hover:bg-brand-1 hover:text-[#edeae3]"
           >
-            Habla con un asesor
+            Ver proyectos
           </a>
         </div>
       </div>
@@ -270,7 +281,10 @@ export default function Home() {
             Ninguno de los dos tiene el mandato de revisar si ese proyecto es una buena inversión para ti.<br/>
             Nosotros sí.
           </p>
-          <CTA button="Contáctanos, da clic"/>
+          <CTA
+            button="Contáctanos, da clic"
+            onClick={() => setLastClick('intro')}
+          />
         </div>
       </section>
 
@@ -302,7 +316,10 @@ export default function Home() {
           </p>
         </div>
         <div className="reading-container">
-          <CTA button="Quieres saber más? Clic"/>
+          <CTA
+            button="Quieres saber más? Clic"
+            onClick={() => setLastClick('problemas')}
+          />
         </div>
       </section>
 
@@ -313,8 +330,8 @@ export default function Home() {
         {/*</div>*/}
         <div className="container grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-neutral-100 p-0">
           {[
-            {num: '+30', desc: `proyectos analizados\nen ${new Date().getFullYear()}`},
-            {num: '8', desc: 'pasaron nuestro\nfiltro de criterios'},
+            {num: '+100', desc: `proyectos analizados\nen ${new Date().getFullYear()}`},
+            {num: '15', desc: 'pasaron nuestro\nfiltro de criterios'},
             {num: '$0', desc: 'costo para el\ninversionista'},
             {num: 'ZMG / TX', desc: 'mercados activos'},
           ].map((s) => (
@@ -353,7 +370,10 @@ export default function Home() {
             ))}
           </div>
           <div className="reading-container">
-            <CTA button="Agenda una cita"/>
+            <CTA
+              button="Agenda una cita"
+              onClick={() => setLastClick('criterios')}
+            />
           </div>
         </div>
       </section>
@@ -384,7 +404,10 @@ export default function Home() {
           ))}
         </div>
         <div className="reading-container">
-          <CTA button="Programa tu sesión, clic"/>
+          <CTA
+            button="Programa tu sesión, clic"
+            onClick={() => setLastClick('proceso')}
+          />
         </div>
       </section>
 
@@ -446,7 +469,11 @@ export default function Home() {
                     <p className="py-1 px-2 border-2 -ft-3 font-medium tracking-wide">{v} ✓</p>
                   ))}
                 </div>
-                <CTA button={`Me interesa ${p.name}`} cta={`Programa una cita para conocer más sobre ${p.name}`}/>
+                <CTA
+                  button={`Me interesa ${p.name}`}
+                  cta={`Programa una cita para conocer más sobre ${p.name}`}
+                  onClick={() => setLastClick(p.name)}
+                />
               </div>
             </div>
           ))}
@@ -495,7 +522,10 @@ export default function Home() {
           ))}
         </div>
         <div className="reading-container">
-          <CTA button="Dale clic, platiquemos"/>
+          <CTA
+            button="Dale clic, platiquemos"
+            onClick={() => setLastClick('testimonios')}
+          />
         </div>
       </section>
 
@@ -525,7 +555,7 @@ export default function Home() {
             No te vamos a presionar.<br/>
             Si no hay algo para ti hoy, te lo decimos en los primeros minutos.
           </p>
-          <OptInForm/>
+          <OptInForm lastClick={lastClick} />
         </div>
       </section>
     </>
