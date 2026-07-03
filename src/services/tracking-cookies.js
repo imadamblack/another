@@ -68,6 +68,7 @@ export default function getTrackingData(searchParams) {
       phone: lead?.phone ?? '',
       whatsapp: lead?.whatsapp ?? '',
       sheetRow: lead?.sheetRow ?? '',
+      lastClick: lead?.lastClick ?? '',
     },
     utm,
     fbc,

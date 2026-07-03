@@ -11,7 +11,6 @@ export default function fbEvent(
   const standardEvents = ['PageView', 'Purchase', 'Lead', 'CompleteRegistration', 'Contact', 'InitiateCheckout'];
   const isStandard = standardEvents.includes(eventName);
 
-  console.log(userData);
   try {
     if (typeof fbq !== 'undefined') {
       if (isStandard) {

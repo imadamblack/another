@@ -44,7 +44,8 @@ export default function OptInForm({lastClick}) {
         'CompleteRegistration',
         {email: data.email, phone: data.phone, externalID: id},
       );
-      setCookie('lead', {...data, id});
+      setCookie('lead', {...data, lastClick, id});
+      setCookie('utm', {...utm});
       router.push(`/survey?id=${id}`);
     } catch {
       fbEvent(
@@ -52,6 +53,7 @@ export default function OptInForm({lastClick}) {
         {email: data.email, phone: data.phone, externalID: ''},
       );
       setCookie('lead', {...data});
+      setCookie('utm', {...utm});
       router.push(`/thankyou`)
     }
   };

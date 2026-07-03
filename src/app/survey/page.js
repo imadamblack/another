@@ -168,6 +168,7 @@ export default function Survey() {
   const {
     shouldRedirect,
     lead,
+    utm
   } = useMemo(() => {
     return getTrackingData(searchParams);
   }, [searchParams]);
@@ -222,7 +223,7 @@ export default function Survey() {
   const onSubmit = async (data) => {
     setSending(true);
     try {
-      const payload = {...lead, ...data};
+      const payload = {...lead, ...data, utm};
 
       const res = await fetch(info.optInWebhook, {
         method: 'POST',
